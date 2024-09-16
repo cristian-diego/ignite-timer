@@ -17,7 +17,12 @@ export const StyledButton = styled.button<StyledButtonProps>`
   width: 100px;
   height: 48px;
 
-  background-color: ${props => props.theme.primary};
+  border-radius: 4px;
+  margin: 8px;
+  border: 0;
+
+  background-color: ${props => props.theme["green-500"]};
+  color:  ${props => props.theme.white};
 
   /* ${props => {
       return css`
