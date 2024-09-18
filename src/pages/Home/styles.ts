@@ -106,3 +106,15 @@ export const StartCountDownButton = styled.button`
     background: ${(props) => props.theme['green-700']};
   }
 `
+
+export const ValidationErrorsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+`
+
+export const ValidationError = styled.span`
+  color: ${(props) => props.theme['red-500']};
+  font-size: 0.875rem;
+`
