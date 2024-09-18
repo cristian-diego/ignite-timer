@@ -9,17 +9,43 @@ import {
   TaskInput,
 } from './styles'
 
+const translations = {
+  workingOn: {
+    pt: 'Vou trabalhar em',
+    en: 'I will work on',
+  },
+  projectNamePlaceholder: {
+    pt: 'Dê um nome para seu projeto',
+    en: 'Name your project',
+  },
+  during: {
+    pt: 'durante',
+    en: 'for',
+  },
+  minutes: {
+    pt: 'minutos.',
+    en: 'minutes.',
+  },
+  start: {
+    pt: 'Começar',
+    en: 'Start',
+  },
+}
+
 export function Home() {
+  // You can set the language here or get it from a context/state
+  const lang = 'en' // or 'pt' for Portuguese
+
   return (
     <HomeContainer>
       <form>
         {/* Input data */}
         <FormContainer>
-          <label htmlFor='task'>Vou trabalhar em</label>
+          <label htmlFor='task'>{translations.workingOn[lang]}</label>
           <TaskInput
             id='task'
             list='tasks-suggestions'
-            placeholder='Dê um nome para seu projeto'
+            placeholder={translations.projectNamePlaceholder[lang]}
           />
 
           <datalist id='tasks-suggestions'>
@@ -31,7 +57,7 @@ export function Home() {
             <option value='Projeto 6' />
           </datalist>
 
-          <label htmlFor='minutesAmount'>durante</label>
+          <label htmlFor='minutesAmount'>{translations.during[lang]}</label>
           <MinutesAmountInput
             type='number'
             id='minutesAmount'
@@ -41,7 +67,7 @@ export function Home() {
             max={60}
           />
 
-          <span>minutos.</span>
+          <span>{translations.minutes[lang]}</span>
         </FormContainer>
 
         {/* CountDown */}
@@ -56,7 +82,7 @@ export function Home() {
 
         <StartCountDownButton type='submit'>
           <Play size={24} />
-          Começar
+          {translations.start[lang]}
         </StartCountDownButton>
       </form>
     </HomeContainer>
