@@ -1,4 +1,4 @@
-import { Play } from 'phosphor-react'
+import { HandPalm, Play } from 'phosphor-react'
 import {
   CountdownContainer,
   FormContainer,
@@ -9,6 +9,7 @@ import {
   StartCountDownButton,
   TaskInput,
   ValidationErrorsContainer,
+  StopCountDownButton,
 } from './styles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -37,13 +38,17 @@ const translations = {
     pt: 'Começar',
     en: 'Start',
   },
+  stop: {
+    pt: 'Parar',
+    en: 'Stop',
+  },
 }
 
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
   minutesAmount: zod
     .number()
-    .min(5, 'O ciclo precisa ser de no mínimo 5 minutos.')
+    .min(1, 'O ciclo precisa ser de no mínimo 1 minuto.')
     .max(60, 'O ciclo precisa ser de no máximo 60 minutos.'),
 })
 
@@ -54,6 +59,8 @@ interface Cycle {
   task: string
   minutesAmount: number
   startDate: Date
+  interruptedDate?: Date
+  finishedDate?: Date
 }
 
 export function Home() {
@@ -80,9 +87,27 @@ export function Home() {
 
     if (activeCycle) {
       interval = setInterval(() => {
-        setAmountSecondsPassed(
-          differenceInSeconds(new Date(), activeCycle.startDate)
+        const secondsDifference = differenceInSeconds(
+          new Date(),
+          activeCycle.startDate
         )
+
+        if (secondsDifference < totalSeconds) {
+          setAmountSecondsPassed(secondsDifference)
+        } else {
+          setCycles((state) =>
+            state.map((cycle) => {
+              if (cycle.id === activeCycleId) {
+                return {
+                  ...cycle,
+                  finishedDate: new Date(),
+                }
+              }
+              return cycle
+            })
+          )
+          setActiveCycleId(null)
+        }
       }, 1000)
     }
 
@@ -119,7 +144,23 @@ export function Home() {
 
     setCycles((state) => [...state, newCycle])
     setActiveCycleId(newCycle.id)
+    setAmountSecondsPassed(0)
     reset()
+  }
+
+  function handleStopCycle() {
+    setCycles((state) =>
+      state.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return {
+            ...cycle,
+            interruptedDate: new Date(),
+          }
+        }
+        return cycle
+      })
+    )
+    setActiveCycleId(null)
   }
 
   return (
@@ -134,6 +175,7 @@ export function Home() {
               list='tasks-suggestions'
               placeholder={translations.projectNamePlaceholder[lang]}
               {...register('task')}
+              disabled={!!activeCycle}
             />
 
             <datalist id='tasks-suggestions'>
@@ -151,9 +193,10 @@ export function Home() {
               id='minutesAmount'
               placeholder='00'
               step={5}
-              min={5}
+              min={1}
               max={60}
               {...register('minutesAmount', { valueAsNumber: true })}
+              disabled={!!activeCycle}
             />
 
             <span>{translations.minutes[lang]}</span>
@@ -180,10 +223,17 @@ export function Home() {
           <span>{seconds[1]}</span>
         </CountdownContainer>
 
-        <StartCountDownButton type='submit' disabled={isSubmitDisabled}>
-          <Play size={24} />
-          {translations.start[lang]}
-        </StartCountDownButton>
+        {activeCycle ? (
+          <StopCountDownButton type='button' onClick={handleStopCycle}>
+            <HandPalm size={24} />
+            {translations.stop[lang]}
+          </StopCountDownButton>
+        ) : (
+          <StartCountDownButton type='submit' disabled={isSubmitDisabled}>
+            <Play size={24} />
+            {translations.start[lang]}
+          </StartCountDownButton>
+        )}
       </form>
     </HomeContainer>
   )
