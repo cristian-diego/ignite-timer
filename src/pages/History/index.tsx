@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { HistoryContainer, HistoryTableContainer, Status } from './styles'
-import { CycleContext } from '../../contexts/CycleContextProvider'
+import { CycleContext } from '../../contexts/CycleContext'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR, enUS } from 'date-fns/locale'
-import { CultureContext } from '../../contexts/CultureContextProvider'
+import { CultureContext } from '../../contexts/CultureContext'
 import { translations } from '../../translations'
 
 export function History() {

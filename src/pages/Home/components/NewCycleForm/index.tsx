@@ -9,8 +9,8 @@ import {
 } from './styles'
 
 import { useContext } from 'react'
-import { CycleContext } from '../../../../contexts/CycleContextProvider'
-import { CultureContext } from '../../../../contexts/CultureContextProvider'
+import { CycleContext } from '../../../../contexts/CycleContext'
+import { CultureContext } from '../../../../contexts/CultureContext'
 
 export function NewCycleForm() {
   const { activeCycle } = useContext(CycleContext)

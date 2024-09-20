@@ -14,8 +14,8 @@ import {
   NewCycleFormValidationSchema,
 } from './components/NewCycleForm/new-cycle-form-type'
 import { useContext } from 'react'
-import { CycleContext } from '../../contexts/CycleContextProvider'
-import { CultureContext } from '../../contexts/CultureContextProvider'
+import { CycleContext } from '../../contexts/CycleContext'
+import { CultureContext } from '../../contexts/CultureContext'
 
 export function Home() {
   const { culture } = useContext(CultureContext)
