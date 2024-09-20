@@ -51,4 +51,8 @@ export const translations = {
     pt: 'Começou em',
     en: 'Started at',
   },
+  myHistory: {
+    pt: 'Meu histórico',
+    en: 'My history',
+  },
 }

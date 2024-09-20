@@ -31,6 +31,9 @@
 - Zod
 - Phosphor Icons
 - React Router Dom
+- Context API
+- Reducers
+- Translations
 - Immer
 - Date Fns
 - Web Audio API

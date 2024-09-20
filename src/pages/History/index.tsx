@@ -13,7 +13,7 @@ export function History() {
   const locale = culture === 'pt' ? ptBR : enUS
   return (
     <HistoryContainer>
-      <h1>Meu histórico</h1>
+      <h1>{translations.myHistory[culture]}</h1>
 
       <HistoryTableContainer>
         <table>
