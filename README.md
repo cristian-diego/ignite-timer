@@ -33,9 +33,6 @@
 - Immer
 - Date Fns
 - Web Audio API
-- ESLint
-- Prettier
-- EditorConfig
 
 ## How to Use:
 
@@ -59,3 +56,14 @@
    ```bash
    http://localhost:5173
    ```
+
+## References 
+
+A little bit about "Prop Drilling"
+https://www.freecodecamp.org/news/prop-drilling-in-react-explained-with-examples/
+
+Context API
+https://react.dev/reference/react/createContext
+
+Reducer 
+https://react.dev/reference/react/useReducer
