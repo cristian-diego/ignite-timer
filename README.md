@@ -4,11 +4,7 @@
 
 ## Screenshots 
 
-<img width="1290" alt="Screenshot 2024-09-20 at 17 14 50" src="https://github.com/user-attachments/assets/aaefb22f-fbac-4cd1-bfb0-9d001015d18b">
-
-<img width="1256" alt="Screenshot 2024-09-20 at 17 14 33" src="https://github.com/user-attachments/assets/607919f8-155b-403b-89b8-91939d16b78b">
-
-<img width="1238" alt="Screenshot 2024-09-20 at 17 16 27" src="https://github.com/user-attachments/assets/825ca527-ced6-455f-bd39-f39d60274616">
+![Sep-20-2024 18-05-49](https://github.com/user-attachments/assets/59ef2e31-34f0-4cad-a919-684548be69bd)
 
 
 ## Features:
