@@ -1,6 +1,16 @@
+import { useContext } from 'react'
 import { HistoryContainer, HistoryTableContainer, Status } from './styles'
+import { CycleContext } from '../../contexts/CycleContextProvider'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR, enUS } from 'date-fns/locale'
+import { CultureContext } from '../../contexts/CultureContextProvider'
+import { translations } from '../../translations'
 
 export function History() {
+  const { cycles } = useContext(CycleContext)
+
+  const { culture } = useContext(CultureContext)
+  const locale = culture === 'pt' ? ptBR : enUS
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -9,58 +19,43 @@ export function History() {
         <table>
           <thead>
             <tr>
-              <th>Tarefa</th>
-              <th>Duração</th>
-              <th>Início</th>
-              <th>Status</th>
+              <th>{translations.task[culture]}</th>
+              <th>{translations.duration[culture]}</th>
+              <th>{translations.startedAt[culture]}</th>
+              <th>{translations.status[culture]}</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td>Tarefa</td>
-              <td>10 minutos</td>
-              <td>Há cerca de 2 dias</td>
-              <td>
-                <Status statusColor='green'>Concluído</Status>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Tarefa</td>
-              <td>10 minutos</td>
-              <td>Há cerca de 2 dias</td>
-              <td>
-                <Status statusColor='green'>Concluído</Status>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Tarefa</td>
-              <td>10 minutos</td>
-              <td>Há cerca de 2 dias</td>
-              <td>
-                <Status statusColor='green'>Concluído</Status>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Tarefa</td>
-              <td>10 minutos</td>
-              <td>Há cerca de 2 dias</td>
-              <td>
-                <Status statusColor='yellow'>Em andamento</Status>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Tarefa</td>
-              <td>10 minutos</td>
-              <td>Há cerca de 2 dias</td>
-              <td>
-                <Status statusColor='red'>Interrompido</Status>
-              </td>
-            </tr>
+            {cycles.map((cycle) => (
+              <tr key={cycle.id}>
+                <td>{cycle.task}</td>
+                <td>
+                  {cycle.minutesAmount} {translations.minutes[culture]}
+                </td>
+                <td>
+                  {formatDistanceToNow(cycle.startDate, {
+                    addSuffix: true,
+                    locale,
+                  })}
+                </td>
+                <td>
+                  {cycle.finishedDate ? (
+                    <Status statusColor='green'>
+                      {translations.finished[culture]}
+                    </Status>
+                  ) : cycle.interruptedDate ? (
+                    <Status statusColor='red'>
+                      {translations.interrupted[culture]}
+                    </Status>
+                  ) : (
+                    <Status statusColor='yellow'>
+                      {translations.inProgress[culture]}
+                    </Status>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </HistoryTableContainer>

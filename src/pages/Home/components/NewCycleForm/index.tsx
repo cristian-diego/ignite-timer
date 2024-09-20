@@ -9,22 +9,23 @@ import {
 } from './styles'
 
 import { useContext } from 'react'
-import { CycleContext } from '../..'
+import { CycleContext } from '../../../../contexts/CycleContextProvider'
+import { CultureContext } from '../../../../contexts/CultureContextProvider'
 
 export function NewCycleForm() {
   const { activeCycle } = useContext(CycleContext)
   const { register, formState } = useFormContext()
-  const lang = 'en' // or 'pt' for Portuguese
+  const { culture } = useContext(CultureContext)
 
   return (
     <div>
       <FormContainer>
-        <label htmlFor='task'>{translations.workingOn[lang]}</label>
+        <label htmlFor='task'>{translations.workingOn[culture]}</label>
 
         <TaskInput
           id='task'
           list='tasks-suggestions'
-          placeholder={translations.projectNamePlaceholder[lang]}
+          placeholder={translations.projectNamePlaceholder[culture]}
           {...register('task')}
           disabled={!!activeCycle}
         />
@@ -38,19 +39,21 @@ export function NewCycleForm() {
           <option value='Projeto 6' />
         </datalist>
 
-        <label htmlFor='minutesAmount'>{translations.during[lang]}</label>
+        <label htmlFor='minutesAmount'>{translations.during[culture]}</label>
         <MinutesAmountInput
           type='number'
           id='minutesAmount'
           placeholder='00'
           step={5}
-          min={1}
+          min={0}
           max={60}
           {...register('minutesAmount', { valueAsNumber: true })}
           disabled={!!activeCycle}
         />
 
-        <span>{translations.minutes[lang]}</span>
+        <span>
+          {translations.minutes[culture]} {'.'}
+        </span>
       </FormContainer>
 
       {formState.isSubmitted && Object.keys(formState.errors).length > 0 && (

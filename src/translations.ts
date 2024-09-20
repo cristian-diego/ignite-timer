@@ -12,8 +12,8 @@ export const translations = {
     en: 'for',
   },
   minutes: {
-    pt: 'minutos.',
-    en: 'minutes.',
+    pt: 'minutos',
+    en: 'minutes',
   },
   start: {
     pt: 'Começar',
@@ -22,5 +22,33 @@ export const translations = {
   stop: {
     pt: 'Parar',
     en: 'Stop',
+  },
+  status: {
+    pt: 'Status',
+    en: 'Status',
+  },
+  finished: {
+    pt: 'Concluído',
+    en: 'Finished',
+  },
+  interrupted: {
+    pt: 'Interrompido',
+    en: 'Interrupted',
+  },
+  inProgress: {
+    pt: 'Em andamento',
+    en: 'In progress',
+  },
+  task: {
+    pt: 'Tarefa',
+    en: 'Task',
+  },
+  duration: {
+    pt: 'Duração',
+    en: 'Duration',
+  },
+  startedAt: {
+    pt: 'Começou em',
+    en: 'Started at',
   },
 }
