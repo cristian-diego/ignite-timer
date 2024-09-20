@@ -27,32 +27,6 @@ export const FormContainer = styled.main`
   flex-wrap: wrap;
 `
 
-export const CountdownContainer = styled.main`
-  font-family: 'Roboto Mono', monospace;
-  font-size: 10rem;
-  line-height: 8rem;
-  color: ${(props) => props.theme['gray-100']};
-
-  display: flex;
-  gap: 1rem;
-
-  span {
-    background: ${(props) => props.theme['gray-700']};
-    padding: 2rem 1rem;
-    border-radius: 8px;
-  }
-`
-
-export const Separator = styled.div`
-  padding: 2rem 0;
-  color: ${(props) => props.theme['green-500']};
-
-  width: 4rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-`
-
 const BaseInput = styled.input`
   background: transparent;
   height: 2.5rem;
@@ -122,16 +96,4 @@ export const StopCountDownButton = styled(BaseCountDownButton)`
   &:not(:disabled):hover {
     background: ${(props) => props.theme['red-700']};
   }
-`
-
-export const ValidationErrorsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
-`
-
-export const ValidationError = styled.span`
-  color: ${(props) => props.theme['red-500']};
-  font-size: 0.875rem;
 `
