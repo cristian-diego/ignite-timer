@@ -22,6 +22,12 @@
 - Zod
 - Phosphor Icons
 - React Router Dom
+- Immer
+- Date Fns
+- Web Audio API
+- ESLint
+- Prettier
+- EditorConfig
 
 ## How to Use:
 
@@ -36,6 +42,7 @@
    npm install
    ```
 3. Start the development server:
+
    ```bash
    npm run dev
    ```

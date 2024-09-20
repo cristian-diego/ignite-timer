@@ -9,6 +9,9 @@ import {
 } from '../reducers/cycles/actions'
 import { differenceInSeconds } from 'date-fns'
 
+import timerFinishedSound from '../assets/sounds/timer-finished.mp3'
+import timerInterruptedSound from '../assets/sounds/timer-interrupted.mp3'
+
 interface CycleContextType {
   activeCycle: Cycle | undefined
   activeCycleId: string | null
@@ -72,6 +75,13 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
 
   function markCurrentCycleAsFinished() {
     dispatch(markCurrentCycleAsFinishedAction())
+
+    playSound(timerFinishedSound)
+  }
+
+  function playSound(sound: string) {
+    const audio = new Audio(sound)
+    audio.play()
   }
 
   function createNewCycle(data: CreateNewCycleData) {
@@ -89,6 +99,7 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
 
   function interruptCurrentCycle() {
     dispatch(interruptCurrentCycleAction())
+    playSound(timerInterruptedSound)
   }
 
   function setSecondsPassed(amountSecondsPassed: number) {
