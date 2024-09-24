@@ -5,7 +5,7 @@ import {
   HeaderLeftContainer,
   StyledFlag,
 } from './styles'
-import { Flag, HandPalm, Scroll, Timer } from 'phosphor-react'
+import { Scroll, Timer } from 'phosphor-react'
 import logo from '../../assets/logo.svg'
 import { useContext } from 'react'
 import { CultureContext } from '../../contexts/CultureContext'
