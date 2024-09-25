@@ -2,7 +2,7 @@
 
 ## Ignite Timer is an intelligent timer designed to help you manage your time efficiently. With advanced features like countdown, visual progress, notifications, and detailed statistics, Ignite Timer makes time management easy and intuitive.
 
-# Published Link 
+## Published Link 
 https://ignite-timer-xi-eight.vercel.app/
 
 ## Screenshots 
