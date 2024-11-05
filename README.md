@@ -43,7 +43,7 @@ https://ignite-timer-xi-eight.vercel.app/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/seu-usuario/ignite-timer.git
+   git clone https://github.com/cristian-diego/ignite-timer.git
    ```
 
 2. Install the dependencies:
